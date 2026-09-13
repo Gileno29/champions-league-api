@@ -1,0 +1,29 @@
+{
+  "name": "champions-league-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dist": "tsup src",
+    "start:dev":"tsx src/server.ts",
+    "start:watch":"tsx watch src/server.ts",
+    "start:div": "npm run dist && node dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gileno29/champions-league-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Gileno29/champions-league-api/issues"
+  },
+  "homepage": "https://github.com/Gileno29/champions-league-api#readme",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
