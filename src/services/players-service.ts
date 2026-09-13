@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import { noContent, ok } from "../helppers/http-helper";
-import { findAllPlayers } from "../repository/player";
+import { findAllPlayers, findPlayerById } from "../repository/player";
 
 export const getPlayerService = async ()=>{
 
@@ -15,3 +15,19 @@ export const getPlayerService = async ()=>{
     return response
 
 };
+
+
+export const getPlayerByIdService = async(id: number)=>{
+
+    const data = await findPlayerById(id)
+    let response = null;
+
+
+    if(data){
+        response = ok(data);
+    }else{
+        response= noContent();
+    }
+
+    return response;
+}
