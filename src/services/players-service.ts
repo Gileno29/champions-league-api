@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import { badRequest, created, noContent, ok } from "../helppers/http-helper";
-import { findAllPlayers, findPlayerById, inserPlayer } from "../repository/player";
+import { deleteOnePlayer, findAllPlayers, findPlayerById, inserPlayer } from "../repository/player";
 
 export const getPlayerService = async ()=>{
 
@@ -43,4 +43,14 @@ export const createPlayerService = async (player: PlayerModel)=>{
 
     return response;
     
+}
+
+export const deletePlayerService= async(id: number)=>{
+    let response=null;
+    await deleteOnePlayer(id);
+
+    response = ok({message: "deleted"})
+
+    return response
+
 }
