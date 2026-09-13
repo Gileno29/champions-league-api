@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import { noContent, ok } from "../helppers/http-helper";
-import { findAllPlayers, findPlayerById } from "../repository/player";
+import { badRequest, created, noContent, ok } from "../helppers/http-helper";
+import { findAllPlayers, findPlayerById, inserPlayer } from "../repository/player";
 
 export const getPlayerService = async ()=>{
 
@@ -23,11 +23,24 @@ export const getPlayerByIdService = async(id: number)=>{
     let response = null;
 
 
-    if(data){
+    if(data!==undefined){
         response = ok(data);
     }else{
         response= noContent();
     }
 
     return response;
+}
+
+export const createPlayerService = async (player: PlayerModel)=>{
+    let response= null
+    if(Object.keys(player).length!==0){
+      await inserPlayer(player)
+      response= created()
+    }else{
+        response=badRequest();
+    }
+
+    return response;
+    
 }
